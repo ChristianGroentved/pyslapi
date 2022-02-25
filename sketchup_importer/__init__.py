@@ -433,7 +433,7 @@ class SceneImporter():
                     if not os.path.isdir(temp_dir):
                         os.mkdir(temp_dir)
                     temp_file_path = os.path.join(temp_dir, tex_name)
-                    # skp_log(f"Texture saved temporarily at {temp_file_path}")
+                    skp_log(f"Texture saved temporarily at {temp_file_path}")
                     tex.write(temp_file_path)
                     img = bpy.data.images.load(temp_file_path)
                     img.pack()
