@@ -49,7 +49,7 @@ bl_info = {
     "location": "File > Import"
 }
 
-DEBUG = False
+DEBUG = True
 
 LOGS = True
 
@@ -426,12 +426,9 @@ class SceneImporter():
 
                 if tex:
                     tex_name = os.path.split(tex.name)[1]
-                    temp_dir = tempfile.gettempdir()
                     skp_fname = os.path.split(self.filepath)[1].split(".")[0]
-                    temp_dir = os.path.join(temp_dir, skp_fname)
+                    temp_dir = tempfile.mkdtemp(suffix=skp_fname)
                     skp_log(f"Final path temp_dir + skethcup file: {temp_dir}")
-                    if not os.path.isdir(temp_dir):
-                        os.mkdir(temp_dir)
                     temp_file_path = os.path.join(temp_dir, tex_name)
                     skp_log(f"Texture saved temporarily at {temp_file_path}")
                     tex.write(temp_file_path)
